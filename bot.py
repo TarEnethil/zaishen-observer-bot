@@ -89,9 +89,9 @@ if __name__ == "__main__":
             matches = ""
 
             if "daily" in config.keys():
-                for mission_type in dailies.keys():
-                    if dailies[mission_type]["name"] in config["daily"][mission_type]:
-                        matches += "{}: {}\n".format(dailies[mission_type]["type"], dailies[mission_type]["name"])
+                for mission in dailies.keys():
+                    if mission in config["daily"].keys() and dailies[mission]["name"] in config["daily"][mission]:
+                        matches += "{}: {}\n".format(dailies[mission]["type"], dailies[mission]["name"])
 
             if matches != "":
                 matches = "Your matched missions for today:\n{}".format(matches)
@@ -117,9 +117,9 @@ if __name__ == "__main__":
             matches = ""
 
             if "weekly" in config.keys():
-                for bonus_type in weeklies.keys():
-                    if weeklies[bonus_type]["name"] in config["weekly"][bonus_type]:
-                        matches += "{}: {}\n".format(weeklies[bonus_type]["type"], weeklies[bonus_type]["name"])
+                for bonus in weeklies.keys():
+                    if bonus in config["weekly"].keys() and weeklies[bonus]["name"] in config["weekly"][bonus]:
+                        matches += "{}: {}\n".format(weeklies[bonus]["type"], weeklies[bonus]["name"])
 
             if matches != "":
                 matches = "Your matched bonuses for this week:\n{}".format(matches)
@@ -146,7 +146,7 @@ if __name__ == "__main__":
 
             if "monthly" in config.keys():
                 for effect in monthlies.keys():
-                    if monthlies[effect]["name"] in config["monthly"][effect]:
+                    if effect in config["monthly"].keys() and monthlies[effect]["name"] in config["monthly"][effect]:
                         matches += "{}: {}\n".format(monthlies[effect]["type"], monthlies[effect]["name"])
 
             if matches != "":
