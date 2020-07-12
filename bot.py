@@ -59,8 +59,17 @@ if __name__ == "__main__":
     parser.add_argument("-a", "--alert", action="store_true", help="announce matched missions via telegram", dest="alert")
     parser.add_argument("-p", "--post", action="store_true", help="post all missions via telegram", dest="post")
     parser.add_argument("--debug", action="store_true", help="don't send via telegram, print to stdout instead", dest="debug")
+    parser.add_argument("--ping", action="store_true", help="send a simple message to show that the bot is working", dest="ping")
 
     args = parser.parse_args()
+
+    config_file = open("config.json", "r")
+    config = json.load(config_file)
+
+    if args.ping:
+        bot = telebot.TeleBot(config["token"])
+        bot.send_message(config["chat_id"], "Balthazar gives me strength! (Bot is still alive)")
+        exit(0)
 
     if not (args.daily or args.weekly or args.monthly):
         print("specify at least one of --daily, --weekly or --monthly")
@@ -71,9 +80,6 @@ if __name__ == "__main__":
         print("specify at least one of --alert or --post")
         parser.print_help()
         exit(1)
-
-    config_file = open("config.json", "r")
-    config = json.load(config_file)
 
     message = ""
 
