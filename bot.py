@@ -54,10 +54,11 @@ def get_monthly_activities():
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Guild Wars Zaishen Mission Notifier")
     parser.add_argument("-d", "--daily", action="store_true", help="check daily missions", dest="daily")
-    parser.add_argument("-w", "--weekly", action="store_true", help="check weekly bonuses", dest="weekly")
+    parser.add_argument("-w", "--weekly", action="store_true", help="check weekly boni", dest="weekly")
     parser.add_argument("-m", "--monthly", action="store_true", help="check monthly effects", dest="monthly")
     parser.add_argument("-a", "--alert", action="store_true", help="announce matched missions via telegram", dest="alert")
     parser.add_argument("-p", "--post", action="store_true", help="post all missions via telegram", dest="post")
+    parser.add_argument("-s", "--silent", action="store_true", help="send a silent notification (no sound)", dest="silent")
     parser.add_argument("--debug", action="store_true", help="don't send via telegram, print to stdout instead", dest="debug")
     parser.add_argument("--ping", action="store_true", help="send a simple message to show that the bot is working", dest="ping")
 
@@ -68,7 +69,7 @@ if __name__ == "__main__":
 
     if args.ping:
         bot = telebot.TeleBot(config["token"])
-        bot.send_message(config["chat_id"], "Balthazar gives me strength! (Bot is still alive)")
+        bot.send_message(config["chat_id"], "Balthazar gives me strength! (Bot is still alive)", disable_notification=args.silent)
         exit(0)
 
     if not (args.daily or args.weekly or args.monthly):
@@ -168,4 +169,4 @@ if __name__ == "__main__":
             print(message)
         else:
             bot = telebot.TeleBot(config["token"])
-            bot.send_message(config["chat_id"], message, parse_mode="MarkdownV2")
+            bot.send_message(config["chat_id"], message, parse_mode="MarkdownV2", disable_notification=args.silent)

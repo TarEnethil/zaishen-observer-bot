@@ -34,24 +34,34 @@ Examples:
 0 17 * * 1 cd <path>/zaishen-observer-bot && venv/bin/python bot.py --weekly --alert
 
 # post all weekly bonuses at midnight every tuesday
-0 0 * * 2 cd <path>/zaishen-observer-bot && venv/bin/python bot.py --weekly --alert
+0 0 * * 2 cd <path>/zaishen-observer-bot && venv/bin/python bot.py --weekly --post
+
+# post monthly effects at the second day of each month at 07:00
+0 7 2 * * cd <path>/zaishen-observer-bot && venv/bin/python bot.py --monthly --post
+
+# send a silent monthly ping to show that bot is still working
+0 10 1 * * cd <path>/zaishen-observer-bot && venv/bin/python bot.py --ping --silent
 ```
 
 
 ## Usage
 
 ```
-usage: bot.py [-h] [-d] [-w] [-a] [-p]
+usage: bot.py [-h] [-d] [-w] [-m] [-a] [-p] [-s] [--debug] [--ping]
 
 Guild Wars Zaishen Mission Notifier
 
 optional arguments:
-  -h, --help    show this help message and exit
-  -d, --daily   check daily missions
-  -w, --weekly  check weekly missions
-  -a, --alert   announce matched missions via telegram
-  -p, --post    post all missions via telegram
+  -h, --help     show this help message and exit
+  -d, --daily    check daily missions
+  -w, --weekly   check weekly boni
+  -m, --monthly  check monthly effects
+  -a, --alert    announce matched missions via telegram
+  -p, --post     post all missions via telegram
+  -s, --silent   send a silent notification (no sound)
+  --debug        don't send via telegram, print to stdout instead
+  --ping         send a simple message to show that the bot is working
 ```
 
-* `--daily` and `--weekly` can be combined.
+* `--daily`, `--weekly` and `--monthly` can be combined.
 * `--alert` and `--post` can be combined.
