@@ -1,0 +1,18 @@
+{
+    "token": "",
+    "chat_id": "",
+    "daily" : {
+        "mission" : [],
+        "bounty" : [],
+        "combat" : [],
+        "vanquish": [],
+        "blade": [],
+        "vanguard": [],
+        "nicholas": []
+    },
+    "weekly": {
+        "pve": [],
+        "pvp": [],
+        "nicholas": []
+    }
+}
