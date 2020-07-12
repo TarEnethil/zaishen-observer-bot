@@ -81,7 +81,7 @@ if __name__ == "__main__":
         dailies = get_daily_activities()
 
         if args.post:
-            message += "Today's Missions:\n"
+            message += "*Today's Missions*\n"
             for d in dailies.values():
                 message += "{}: {}\n".format(d["type"], d["name"])
 
@@ -94,7 +94,7 @@ if __name__ == "__main__":
                         matches += "{}: {}\n".format(dailies[mission]["type"], dailies[mission]["name"])
 
             if matches != "":
-                matches = "Your matched missions for today:\n{}".format(matches)
+                matches = "*Alerts for Today*\n{}".format(matches)
 
                 if message != "":
                     matches = "\n" + matches
@@ -108,7 +108,7 @@ if __name__ == "__main__":
             if message != "":
                 message += "\n"
 
-            message += "This Week's Bonuses:\n"
+            message += "*This Week's Boni*\n"
 
             for w in weeklies.values():
                 message += "{}: {}\n".format(w["type"], w["name"])
@@ -122,7 +122,7 @@ if __name__ == "__main__":
                         matches += "{}: {}\n".format(weeklies[bonus]["type"], weeklies[bonus]["name"])
 
             if matches != "":
-                matches = "Your matched bonuses for this week:\n{}".format(matches)
+                matches = "*Alerts for this Week*\n{}".format(matches)
 
                 if message != "":
                     matches = "\n" + matches
@@ -136,7 +136,7 @@ if __name__ == "__main__":
             if message != "":
                 message += "\n"
 
-            message += "This Month's Effects:\n"
+            message += "*This Month's Effects*\n"
 
             for m in monthlies.values():
                 message += "{}: {}\n".format(m["type"], m["name"])
@@ -150,7 +150,7 @@ if __name__ == "__main__":
                         matches += "{}: {}\n".format(monthlies[effect]["type"], monthlies[effect]["name"])
 
             if matches != "":
-                matches = "Your matched effects for this month:\n{}".format(matches)
+                matches = "*Alerts for this Month*\n{}".format(matches)
 
                 if message != "":
                     matches = "\n" + matches
@@ -162,4 +162,4 @@ if __name__ == "__main__":
             print(message)
         else:
             bot = telebot.TeleBot(config["token"])
-            bot.send_message(config["chat_id"], message)
+            bot.send_message(config["chat_id"], message, parse_mode="MarkdownV2")
