@@ -6,6 +6,9 @@ Post all or subscribe to specific daily or weekly bonuses in Guild Wars.
 * Create Telegram bot (@BotFather) to get API Key ("token")
 * Write one message to your bot and get your "chat_id" from `https://api.telegram.org/bot<TOKEN>/getUpdates`
 * Rename `config.json.template` to `config.json`
+* `python3 -m venv venv`
+* `venv/bin/activate`
+* `pip install -r requirements.txt`
 * Insert in "token" and "api_key" `config.json`
 * (optional) configure which missions you want to be alerted for (exact matches only, currently)
 * Call bot via cronjob
