@@ -1,6 +1,6 @@
 # Zaishen Observer Bot
 
-Post all or subscribe to specific daily or weekly bonuses in Guild Wars.
+Post all or subscribe to specific daily, weekly or monthly events in Guild Wars via your own Telegram Bot.
 
 ## Setup Telegram Bot
 * Create Telegram bot (@BotFather) to get API Key ("token")
