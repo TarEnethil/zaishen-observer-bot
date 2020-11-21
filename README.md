@@ -16,7 +16,7 @@ pip install -r requirements.txt
 cp config.json.template config.json
 ```
 
-* Add "token" and "api_key" to `config.json`
+* Add "token" and "chat_id" to `config.json`
 * (optional) configure which missions you want to be alerted for (exact matches only, currently)
 
 ## Setup cronjob
