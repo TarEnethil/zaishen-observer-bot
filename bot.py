@@ -32,7 +32,13 @@ def get_weekly_activities():
 
     activities = {}
 
-    activities["pve"] = { "type": "PvE bonus", "name" : tr.contents[3].find("a").string }
+    try:
+        # PvE column does not necessarily have a link..
+        activities["pve"] = { "type": "PvE bonus", "name" : tr.contents[3].find("a").string }
+    except:
+        # ... so use raw cell content if no link is found
+        activities["pve"] = { "type": "PvE bonus", "name" : tr.contents[3].string.strip() }
+
     activities["pvp"] = { "type": "PvP bonus", "name" : tr.contents[5].find("a").string }
     activities["nicholas"] = { "type": "Nicholas item", "name" : tr.contents[7].find("a").string }
 
