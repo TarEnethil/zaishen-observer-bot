@@ -6,8 +6,10 @@ import requests
 import argparse
 from bs4 import BeautifulSoup
 
+headers = { "Cache-Control": "no-cache, no-store", "Pragma": "no-cache" }
+
 def get_daily_activities():
-    html = requests.get("https://wiki.guildwars.com/wiki/Daily_activities").text
+    html = requests.get("https://wiki.guildwars.com/wiki/Daily_activities", headers=headers).text
     soup = BeautifulSoup(html, 'html.parser')
 
     tr = soup.find('tr', attrs = {'style' : "font-weight: bold;"})
@@ -25,7 +27,7 @@ def get_daily_activities():
     return activities
 
 def get_weekly_activities():
-    html = requests.get("https://wiki.guildwars.com/wiki/Weekly_activities").text
+    html = requests.get("https://wiki.guildwars.com/wiki/Weekly_activities", headers=headers).text
     soup = BeautifulSoup(html, 'html.parser')
 
     tr = soup.find('tr', attrs = {'style' : "font-weight: bold;"})
@@ -46,7 +48,7 @@ def get_weekly_activities():
     return activities
 
 def get_monthly_activities():
-    html = requests.get("https://wiki.guildwars.com/wiki/Flux").text
+    html = requests.get("https://wiki.guildwars.com/wiki/Flux", headers=headers).text
     soup = BeautifulSoup(html, 'html.parser')
 
     tr = soup.find('tr', attrs = {'style' : "font-weight:bold"})
